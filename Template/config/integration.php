@@ -56,6 +56,10 @@
     <?= $this->form->text('oauth2_custom_login_text', $values) ?>
     <p class="form-help"><?= t('Enter the text you would prefer to see rather than the default "OAuth2 login".') ?></p>
 
+    <?= $this->form->label(t('Custom Login HTML'), 'oauth2_custom_login_html') ?>
+    <?= $this->form->textarea('oauth2_custom_login_html', $values) ?>
+    <p class="form-help"><?= t('Enter custom HTML to show in place of the default "OAuth2 login". The string "$href" will be replaced with the login url.') ?></p>
+
     <div class="form-actions">
         <input type="submit" value="<?= t('Save') ?>" class="btn btn-blue"/>
     </div>
