@@ -33,6 +33,9 @@
     <?= $this->form->label(t('User ID Key'), 'oauth2_key_user_id') ?>
     <?= $this->form->text('oauth2_key_user_id', $values) ?>
 
+    <?= $this->form->label(t('User Avatar URL Key'), 'oauth2_key_avatar_url') ?>
+    <?= $this->form->text('oauth2_key_avatar_url', $values) ?>
+
     <?= $this->form->hidden('oauth2_split_keys', array('oauth2_split_keys' => 0)) ?>
     <?= $this->form->checkbox('oauth2_split_keys', t('Use composite keys?'), 1, isset($values['oauth2_split_keys']) && $values['oauth2_split_keys'] == 1) ?>
     <p class="form-help"><?= t('Interpret \'.\' in keys as keys for sub-objects') ?></p>

@@ -147,6 +147,17 @@ class GenericOAuth2UserProvider extends Base implements UserProviderInterface
     }
 
     /**
+     * Get user avatar url
+     *
+     * @access public
+     * @return string
+     */
+    public function getAvatarUrl()
+    {
+        return $this->getKey('oauth2_key_avatar_url');
+    }
+
+    /**
      * Check if group is in filter
      *
      * @access protected
