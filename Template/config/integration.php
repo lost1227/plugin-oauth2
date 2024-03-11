@@ -33,6 +33,9 @@
     <?= $this->form->label(t('User ID Key'), 'oauth2_key_user_id') ?>
     <?= $this->form->text('oauth2_key_user_id', $values) ?>
 
+    <?= $this->form->label(t('User Avatar URL Key'), 'oauth2_key_avatar_url') ?>
+    <?= $this->form->text('oauth2_key_avatar_url', $values) ?>
+
     <?= $this->form->hidden('oauth2_account_creation', array('oauth2_account_creation' => 0)) ?>
     <?= $this->form->checkbox('oauth2_account_creation', t('Allow Account Creation'), 1, isset($values['oauth2_account_creation']) && $values['oauth2_account_creation'] == 1) ?>
 

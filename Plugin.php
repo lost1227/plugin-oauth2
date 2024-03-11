@@ -7,6 +7,9 @@ use Kanboard\Core\Security\Role;
 use Kanboard\Core\Translator;
 use Kanboard\Plugin\OAuth2\Auth\GenericOAuth2Provider;
 
+use Kanboard\Core\User\UserProfile;
+use Kanboard\Event\UserProfileSyncEvent;
+
 class Plugin extends Base
 {
     public function initialize()
@@ -23,6 +26,13 @@ class Plugin extends Base
         $this->template->hook->attach('template:user:external', 'OAuth2:user/external');
         $this->template->hook->attach('template:user:authentication:form', 'OAuth2:user/authentication');
         $this->template->hook->attach('template:user:create-remote:form', 'OAuth2:user/create_remote');
+
+        $this->helper->register('oauth2AvatarHelper', '\Kanboard\Plugin\OAuth2\Helper\OAuth2AvatarHelper');
+
+        $container = $this->container;
+        $this->dispatcher->addListener(UserProfile::EVENT_USER_PROFILE_AFTER_SYNC, function(UserProfileSyncEvent $event) use ($container) {
+            $container['helper']->oauth2AvatarHelper->synchronizeAvatar($event->getUser());
+        });
     }
 
     public function onStartup()
